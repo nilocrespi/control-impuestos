@@ -1,0 +1,537 @@
+/* ─── Reset & Variables ─────────────────────────────────────────── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg:           #fdf6ec;
+    --bg-pattern:   #6fc782;
+    --surface:      #fff8f0;
+    --surface-2:    #fff3e3;
+    --border:       #d4b896;
+    --border-strong: #9c7a5a;
+    --text:         #2a1f14;
+    --text-muted:   #7a6050;
+    --accent:       #6fc782;
+    --accent-dark:  #4ea86a;
+    --danger:       #e05a6a;
+    --danger-dark:  #c04455;
+    --paid:         #4ea86a;
+    --unpaid:       #e05a6a;
+    --font-display: "Monoton", cursive;
+    --font-body:    "Georgia", serif;
+    --radius:       0.5rem;
+    --radius-lg:    1rem;
+    --shadow:       0 2px 8px rgba(42, 31, 20, 0.1);
+    --shadow-lg:    0 8px 24px rgba(42, 31, 20, 0.15);
+}
+
+/* ─── Body & Background ─────────────────────────────────────────── */
+body {
+    background-color: var(--bg);
+    background-image:
+        radial-gradient(circle at 100% 50%, transparent 20%, var(--bg-pattern) 21%, var(--bg-pattern) 34%, transparent 35%, transparent),
+        radial-gradient(circle at 0% 50%, transparent 20%, var(--bg-pattern) 21%, var(--bg-pattern) 34%, transparent 35%, transparent) 0 -3.125rem;
+    background-size: 4.6875rem 6.25rem;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    color: var(--text);
+}
+
+/* ─── Page Structure ────────────────────────────────────────────── */
+.pageWrapper {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+}
+
+/* ─── Header ────────────────────────────────────────────────────── */
+.appHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0 1rem;
+    background-color: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.appTitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    background-color: var(--bg);
+}
+
+/* ─── Logout ────────────────────────────────────────────────────── */
+.logoutBtn {
+    height: 2.5rem;
+    padding: 0 1.25rem;
+    background-color: var(--danger);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+}
+.logoutBtn:hover {
+    background-color: var(--danger-dark);
+    transform: scale(1.02);
+}
+
+/* ─── Login ─────────────────────────────────────────────────────── */
+.loginWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 8vh;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: min(22rem, 90%);
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.loginInput {
+    height: 2.75rem;
+    padding: 0 1rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    transition: border-color 0.2s;
+}
+.loginInput:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+}
+
+.loginBtn {
+    height: 2.75rem;
+    background-color: var(--accent);
+    color: var(--text);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 0.25rem;
+}
+.loginBtn:hover { background-color: var(--accent-dark); color: #fff; }
+.loginBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ─── Main Layout ───────────────────────────────────────────────── */
+.appMain {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1rem;
+}
+
+/* ─── Section shells ────────────────────────────────────────────── */
+.formSection,
+.tableSection {
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+}
+
+.sectionTitle {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+}
+
+/* ─── Tax Form ──────────────────────────────────────────────────── */
+.taxForm { width: 100%; }
+
+.inputRow {
+    display: flex;
+    align-items: flex-end;
+    gap: 1rem;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.inputGroup:nth-child(1) { flex: 2; }   /* Impuesto — más ancho */
+.inputGroup:nth-child(2) { flex: 1.2; } /* Importe */
+.inputGroup:nth-child(3) { flex: 1.2; } /* Vencimiento */
+
+.inputLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+}
+
+.taxInput,
+.valueInput,
+.dateInput {
+    height: 2.75rem;
+    padding: 0 0.875rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    transition: border-color 0.2s;
+    width: 100%;
+}
+.taxInput:focus,
+.valueInput:focus,
+.dateInput:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+}
+
+/* remove number arrows */
+.valueInput::-webkit-inner-spin-button,
+.valueInput::-webkit-outer-spin-button { -webkit-appearance: none; }
+.valueInput[type=number] { -moz-appearance: textfield; appearance: textfield; }
+
+.addButton {
+    height: 2.75rem;
+    padding: 0 1.5rem;
+    background-color: var(--accent);
+    color: var(--text);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s, transform 0.15s;
+    flex-shrink: 0;
+}
+.addButton:hover {
+    background-color: var(--accent-dark);
+    color: #fff;
+    transform: scale(1.02);
+}
+
+/* ─── Table ─────────────────────────────────────────────────────── */
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.taxTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+/* Header row */
+.tableHeader th {
+    padding: 0.6rem 1rem;
+    text-align: left;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    border-bottom: 2px solid var(--border);
+    white-space: nowrap;
+}
+
+/* Column widths */
+.col-menu       { width: 3rem; text-align: center; }
+.col-impuesto   { width: 30%; }
+.col-importe    { width: 14%; text-align: center; }
+.col-vencimiento{ width: 14%; text-align: center; }
+.col-pagado     { width: 18%; text-align: center; }
+.col-categoria  { width: 18%; }
+
+/* Data rows */
+.taxRow td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.taxRow:last-child td { border-bottom: none; }
+
+.taxRow:hover { background-color: var(--surface-2); }
+
+.taxRow.row-pagado { opacity: 0.75; }
+
+.col-importe { font-variant-numeric: tabular-nums; }
+
+/* Empty state */
+.emptyState {
+    padding: 3rem 1rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ─── Context Menu (···) ────────────────────────────────────────── */
+.menuTrigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto;
+    background: none;
+    border: 1.5px solid transparent;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+    letter-spacing: -0.05em;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.menuTrigger:hover {
+    background-color: var(--surface-2);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+/* Rendered via portal — position set inline by JS */
+.contextMenu {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    min-width: 10rem;
+    overflow: hidden;
+}
+
+.contextMenuItem {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 0.875rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: background-color 0.15s;
+    color: var(--text);
+}
+.contextMenuItem:hover { background-color: var(--surface-2); }
+.contextMenuItem--danger { color: var(--danger); }
+.contextMenuItem--danger:hover { background-color: #fde8eb; }
+
+/* ─── Status Button ─────────────────────────────────────────────── */
+.statusBtn {
+    padding: 0.3rem 0.75rem;
+    border: none;
+    border-radius: 2rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.15s;
+}
+.statusBtn:hover { opacity: 0.85; transform: scale(1.03); }
+
+.pagado {
+    background-color: #d4f0db;
+    color: #2d7a47;
+}
+.impago {
+    background-color: #fde0e4;
+    color: #a0293a;
+}
+
+.categoriaEmpty { color: var(--text-muted); }
+
+
+/* ─── Categoría list (celda) ────────────────────────────────────── */
+.categoriaList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+}
+
+/* ─── Categoría tag ─────────────────────────────────────────────── */
+.categoriaTag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.55rem;
+    background-color: #e8f4fd;
+    color: #1a5f8a;
+    border: 1.5px solid #a8d4f0;
+    border-radius: 2rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: default;
+    white-space: nowrap;
+    transition: background-color 0.15s, border-color 0.15s;
+}
+
+.categoriaTag--sm {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+}
+
+.categoriaTagLabel {
+    line-height: 1;
+}
+
+/* El × aparece solo en hover del tag, via React state */
+.categoriaTagRemove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity 0.15s, background-color 0.1s;
+}
+.categoriaTag:hover .categoriaTagRemove {
+    opacity: 1;
+}
+.categoriaTagRemove:hover {
+    background-color: rgba(224, 90, 106, 0.15);
+}
+
+/* ─── Categoría Popup ───────────────────────────────────────────── */
+.popupRow { position: relative; }
+.popupCell { padding: 0 !important; border: none !important; }
+
+.categoriaPopupBackdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+}
+
+.categoriaPopup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 201;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 1.75rem 2rem;
+    width: min(24rem, 90vw);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.categoriaPopupTitle {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.categoriaPopupSub {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-top: -0.5rem;
+}
+
+/* Tags ya asignadas dentro del popup (solo lectura) */
+.categoriaPopupExistentes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.categoriaPopupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.categoriaInput {
+    height: 2.75rem;
+    padding: 0 0.875rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg);
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    transition: border-color 0.2s;
+}
+.categoriaInput:focus {
+    outline: none;
+    border-color: var(--accent-dark);
+}
+
+.categoriaPopupBtns {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.categoriaConfirm {
+    flex: 1;
+    height: 2.5rem;
+    background-color: var(--accent);
+    color: var(--text);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.categoriaConfirm:hover { background-color: var(--accent-dark); color: #fff; }
+
+.categoriaCancel {
+    flex: 1;
+    height: 2.5rem;
+    background-color: var(--surface-2);
+    color: var(--text-muted);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.categoriaCancel:hover { background-color: var(--border); color: var(--text); }
