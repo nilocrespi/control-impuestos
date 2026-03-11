@@ -30,8 +30,11 @@ export const useImpuestos = (userId) => {
         const uid = uidRef.current;
         if (!uid) return;
         const tempId = `temp_${Date.now()}`;
-        setImpuestos((prev) => { const u = [{ ...newItem, id: tempId, categorias: [] }, ...prev]; saveCache(uid, u); return u; });
-        const ref = await addDoc(collection(db, `users/${uid}/impuestos`), { ...newItem, categorias: [] });
+        const tempCreado = Date.now();
+        setImpuestos((prev) => { const u = [{ ...newItem, id: tempId, categorias: [], creadoEn: tempCreado }, ...prev]; saveCache(uid, u); return u; });
+        const creadoEn = Date.now();
+        setImpuestos((prev) => { const u = prev.map((i) => i.id === tempId ? { ...i, creadoEn } : i); saveCache(uid, u); return u; });
+        const ref = await addDoc(collection(db, `users/${uid}/impuestos`), { ...newItem, categorias: [], creadoEn });
         setImpuestos((prev) => { const u = prev.map((i) => i.id === tempId ? { ...i, id: ref.id } : i); saveCache(uid, u); return u; });
     }, []);
 

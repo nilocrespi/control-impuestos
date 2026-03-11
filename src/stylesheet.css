@@ -251,7 +251,6 @@ body {
 /* Header row */
 .tableHeader th {
     padding: 0.6rem 1rem;
-    text-align: left;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -535,3 +534,228 @@ body {
     transition: background-color 0.2s;
 }
 .categoriaCancel:hover { background-color: var(--border); color: var(--text); }
+
+/* ─── Tag clickeable y estado activo ────────────────────────────── */
+.categoriaTag {
+    cursor: pointer;
+}
+.categoriaTag:hover {
+    background-color: #d0eaf9;
+    border-color: #7bbde8;
+}
+.categoriaTag--activo {
+    background-color: #1a5f8a;
+    color: #fff;
+    border-color: #1a5f8a;
+}
+.categoriaTag--activo .categoriaTagRemove {
+    color: rgba(255,255,255,0.8);
+}
+.categoriaTag--activo:hover {
+    background-color: #154e73;
+    border-color: #154e73;
+}
+
+/* ─── Filtro activo indicator ───────────────────────────────────── */
+.tableSectionHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+.tableSectionHeader .sectionTitle {
+    margin-bottom: 0;
+}
+
+.filtroActivo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.filtroClear {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    transition: color 0.15s;
+}
+.filtroClear:hover { color: var(--danger); }
+
+/* ─── Categoría th clickeable ───────────────────────────────────── */
+.col-categoria--clickeable {
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: color 0.15s;
+}
+.col-categoria--clickeable:hover {
+    color: var(--text);
+}
+.col-categoria--activo {
+    color: #1a5f8a;
+}
+
+.categoriaThChevron {
+    font-size: 0.6rem;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+    opacity: 0.6;
+}
+
+.categoriaThDot {
+    display: inline-block;
+    width: 0.45rem;
+    height: 0.45rem;
+    background-color: #1a5f8a;
+    border-radius: 50%;
+    margin-left: 0.35rem;
+    vertical-align: middle;
+}
+
+/* ─── Categoría dropdown panel ──────────────────────────────────── */
+.categoriaDropdown {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    z-index: 1000;
+    min-width: 12rem;
+    overflow: hidden;
+}
+
+.categoriaDropdownTitle {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    padding: 0.65rem 1rem 0.4rem;
+}
+
+.categoriaDropdownEmpty {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 0.4rem 1rem 0.75rem;
+}
+
+.categoriaDropdownList {
+    display: flex;
+    flex-direction: column;
+}
+
+.categoriaDropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 0.875rem;
+    font-family: var(--font-body);
+    color: var(--text);
+    cursor: pointer;
+    transition: background-color 0.12s;
+}
+.categoriaDropdownItem:hover {
+    background-color: var(--surface-2);
+}
+.categoriaDropdownItem--activo {
+    color: #1a5f8a;
+    font-weight: 700;
+}
+
+.categoriaDropdownDot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    background-color: #a8d4f0;
+    flex-shrink: 0;
+}
+.categoriaDropdownItem--activo .categoriaDropdownDot {
+    background-color: #1a5f8a;
+}
+
+.categoriaDropdownCheck {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #1a5f8a;
+}
+
+.categoriaDropdownClear {
+    display: block;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--border);
+    text-align: left;
+    font-size: 0.8rem;
+    font-family: var(--font-body);
+    color: var(--danger);
+    cursor: pointer;
+    transition: background-color 0.12s;
+}
+.categoriaDropdownClear:hover {
+    background-color: #fde8eb;
+}
+
+/* ─── Pago filter dots en dropdown ──────────────────────────────── */
+.pagoDropdownDot {
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+.pagoDropdownDot--pagado { background-color: #4ea86a; }
+.pagoDropdownDot--impago { background-color: #e05a6a; }
+
+/* ─── Pago filter tag en header de sección ──────────────────────── */
+.pagoFilterTag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.55rem;
+    border-radius: 2rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+.pagoFilterTag--pagado {
+    background-color: #d4f0db;
+    color: #2d7a47;
+    border: 1.5px solid #a8dbb8;
+}
+.pagoFilterTag--impago {
+    background-color: #fde0e4;
+    color: #a0293a;
+    border: 1.5px solid #f0a8b0;
+}
+
+/* ─── Sin categoría option ──────────────────────────────────────── */
+.categoriaDropdownSeparator {
+    height: 1px;
+    background-color: var(--border);
+    margin: 0.25rem 0;
+}
+
+.categoriaDropdownDot--empty {
+    background-color: transparent;
+    border: 1.5px dashed var(--text-muted);
+}
+
+.categoriaDropdownItem--sincat {
+    color: var(--text-muted);
+    font-style: italic;
+}
+.categoriaDropdownItem--sincat.categoriaDropdownItem--activo {
+    color: #1a5f8a;
+    font-style: italic;
+}
