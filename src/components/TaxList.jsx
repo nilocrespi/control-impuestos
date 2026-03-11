@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
-import TaxItem from "./TaxItem.jsx";
+import TaxItem from "./TaxItem";
 
 // ─── Dropdown genérico via portal ────────────────────────────────
 const HeaderDropdown = ({ anchorRef, onClose, children }) => {
