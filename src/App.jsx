@@ -7,7 +7,7 @@ import TaxList from "./components/TaxList.jsx";
 
 const App = () => {
     const { user, authReady, login, logout } = useAuth();
-    const { impuestos, add, toggle, remove, addCategoria, removeCategoria } = useImpuestos(user?.uid ?? null);
+    const { impuestos, add, toggle, remove, addCategoria, removeCategoria, updateFechaPago } = useImpuestos(user?.uid ?? null);
     const [filtroCategoria, setFiltroCategoria] = useState(null);
     const [filtroPago, setFiltroPago] = useState(null); // null | "pagado" | "impago"
 
@@ -83,6 +83,7 @@ const App = () => {
                             onDelete={remove}
                             onAddCategoria={addCategoria}
                             onRemoveCategoria={removeCategoria}
+                            onUpdateFechaPago={updateFechaPago}
                             onTagClick={handleTagClick}
                             filtroCategoria={filtroCategoria}
                             filtroPago={filtroPago}

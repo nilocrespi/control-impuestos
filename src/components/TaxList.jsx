@@ -28,7 +28,7 @@ const HeaderDropdown = ({ anchorRef, onClose, children }) => {
 };
 
 // ─── TaxList ──────────────────────────────────────────────────────
-const TaxList = ({ items, allItems, onToggle, onDelete, onAddCategoria, onRemoveCategoria, onTagClick, filtroCategoria, filtroPago, onPagoFilter }) => {
+const TaxList = ({ items, allItems, onToggle, onDelete, onAddCategoria, onRemoveCategoria, onTagClick, filtroCategoria, filtroPago, onPagoFilter, onUpdateFechaPago }) => {
     const [catOpen, setCatOpen]   = useState(false);
     const [pagoOpen, setPagoOpen] = useState(false);
     const catRef  = useRef(null);
@@ -96,6 +96,7 @@ const TaxList = ({ items, allItems, onToggle, onDelete, onAddCategoria, onRemove
                                 onRemoveCategoria={onRemoveCategoria}
                                 onTagClick={onTagClick}
                                 filtroCategoria={filtroCategoria}
+                                onUpdateFechaPago={onUpdateFechaPago}
                             />
                         ))
                     )}

@@ -72,5 +72,12 @@ export const useImpuestos = (userId) => {
         await updateDoc(doc(db, `users/${uid}/impuestos`, id), { categorias: updated });
     }, []);
 
-    return { impuestos, add, toggle, remove, addCategoria, removeCategoria };
+    const updateFechaPago = useCallback(async (id, nuevaFecha) => {
+        const uid = uidRef.current;
+        if (!uid) return;
+        setImpuestos((prev) => { const u = prev.map((i) => i.id === id ? { ...i, fechaPago: nuevaFecha } : i); saveCache(uid, u); return u; });
+        await updateDoc(doc(db, `users/${uid}/impuestos`, id), { fechaPago: nuevaFecha });
+    }, []);
+
+    return { impuestos, add, toggle, remove, addCategoria, removeCategoria, updateFechaPago };
 };
