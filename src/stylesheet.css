@@ -251,6 +251,7 @@ body {
 /* Header row */
 .tableHeader th {
     padding: 0.6rem 1rem;
+    text-align: left;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -758,4 +759,299 @@ body {
 .categoriaDropdownItem--sincat.categoriaDropdownItem--activo {
     color: #1a5f8a;
     font-style: italic;
+}
+
+/* ─── Sin categoría option en dropdown ──────────────────────────── */
+.categoriaDropdownSeparator {
+    height: 1px;
+    background-color: var(--border);
+    margin: 0.25rem 0;
+}
+
+.categoriaDropdownDot--empty {
+    background-color: transparent;
+    border: 1.5px solid var(--border);
+}
+
+.categoriaDropdownItem--sincat {
+    color: var(--text-muted);
+    font-style: italic;
+}
+.categoriaDropdownItem--sincat.categoriaDropdownItem--activo {
+    color: #1a5f8a;
+    font-style: italic;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE  (max-width: 767px)
+   ════════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+    /* ── Wrapper & header ──────────────────────────────────────── */
+    .pageWrapper {
+        padding: 0 1rem 6rem;
+    }
+
+    .appHeader {
+        padding: 1rem 0 0.75rem;
+    }
+
+    .appTitle {
+        font-size: clamp(1.1rem, 5vw, 1.6rem);
+    }
+
+    .logoutBtn {
+        font-size: 0.8rem;
+        padding: 0 0.875rem;
+        height: 2.25rem;
+    }
+
+    /* ── Form ──────────────────────────────────────────────────── */
+    .formSection {
+        padding: 1.25rem 1rem;
+    }
+
+    .inputRow {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    /* Reset flex overrides for mobile column layout */
+    .inputGroup:nth-child(1),
+    .inputGroup:nth-child(2),
+    .inputGroup:nth-child(3) { flex: unset; width: 100%; }
+
+    .addButton {
+        width: 100%;
+        height: 3rem;
+        font-size: 1rem;
+    }
+
+    /* ── Table section shell ───────────────────────────────────── */
+    .tableSection {
+        padding: 1.25rem 1rem;
+    }
+
+    /* ── Mobile filter bar ─────────────────────────────────────── */
+    .mobileFilterBar {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .mobileFilterBtn {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        height: 2.25rem;
+        padding: 0 1rem;
+        background: var(--surface-2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 0.875rem;
+        font-family: var(--font-body);
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: background-color 0.15s, border-color 0.15s;
+    }
+    .mobileFilterBtn--activo {
+        border-color: #1a5f8a;
+        color: #1a5f8a;
+        background: #e8f4fd;
+    }
+
+    .mobileFilterCount {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 1.1rem;
+        height: 1.1rem;
+        background: #1a5f8a;
+        color: #fff;
+        border-radius: 50%;
+        font-size: 0.65rem;
+        font-weight: 700;
+    }
+
+    .emptyStateMobile {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-muted);
+        font-style: italic;
+        font-size: 0.9rem;
+    }
+
+    /* ── Tax card ──────────────────────────────────────────────── */
+    .mobileListWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .taxCard {
+        background: var(--bg);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 0.875rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+        transition: background-color 0.15s;
+    }
+    .taxCard--pagado { opacity: 0.75; }
+    .taxCard--impago { border-left: 3px solid var(--unpaid); }
+
+    .taxCardHeader {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+    }
+
+    .taxCardNombre {
+        font-size: 1rem;
+        font-weight: 700;
+        color: var(--text);
+        flex: 1;
+    }
+
+    .taxCardMenu {
+        flex-shrink: 0;
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .taxCardMeta {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+    }
+
+    .taxCardMetaItem {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .taxCardMetaLabel {
+        font-size: 0.65rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-muted);
+    }
+
+    .taxCardMetaValue {
+        font-size: 0.9rem;
+        color: var(--text);
+        font-variant-numeric: tabular-nums;
+    }
+
+    .taxCardTags {
+        margin-top: 0.1rem;
+    }
+
+    /* statusBtn en card: más compacto */
+    .taxCard .statusBtn {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.65rem;
+        margin-left: auto;
+    }
+
+    /* ── Bottom sheet ──────────────────────────────────────────── */
+    .bottomSheetBackdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(42, 31, 20, 0.4);
+        z-index: 500;
+        backdrop-filter: blur(2px);
+    }
+
+    .bottomSheet {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 501;
+        background: var(--surface);
+        border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        padding: 0.75rem 0 2rem;
+        box-shadow: 0 -4px 24px rgba(42, 31, 20, 0.15);
+        animation: slideUp 0.22s ease;
+    }
+
+    @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .bottomSheetHandle {
+        width: 2.5rem;
+        height: 0.25rem;
+        background: var(--border);
+        border-radius: 2rem;
+        margin: 0 auto 1rem;
+    }
+
+    .bottomSheetTitle {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        padding: 0 1.25rem 0.5rem;
+    }
+
+    .bottomSheetSectionLabel {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text-muted);
+        padding: 0.75rem 1.25rem 0.25rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .bottomSheetItem {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        width: 100%;
+        padding: 0.875rem 1.25rem;
+        background: none;
+        border: none;
+        text-align: left;
+        font-size: 1rem;
+        font-family: var(--font-body);
+        color: var(--text);
+        cursor: pointer;
+        transition: background-color 0.12s;
+    }
+    .bottomSheetItem:active { background-color: var(--surface-2); }
+    .bottomSheetItem--danger { color: var(--danger); }
+    .bottomSheetItem--check  { font-size: 0.95rem; }
+    .bottomSheetItem--checked { font-weight: 700; }
+
+    .bottomSheetCheck {
+        margin-left: auto;
+        color: #1a5f8a;
+        font-size: 0.9rem;
+    }
+
+    .bottomSheetCancel {
+        display: block;
+        width: calc(100% - 2.5rem);
+        margin: 0.75rem 1.25rem 0;
+        height: 3rem;
+        background: var(--surface-2);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        font-size: 1rem;
+        font-family: var(--font-body);
+        font-weight: 600;
+        color: var(--text-muted);
+        cursor: pointer;
+    }
 }
