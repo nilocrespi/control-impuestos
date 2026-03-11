@@ -251,7 +251,6 @@ body {
 /* Header row */
 .tableHeader th {
     padding: 0.6rem 1rem;
-    text-align: left;
     font-size: 0.72rem;
     font-weight: 700;
     text-transform: uppercase;
